@@ -16,7 +16,7 @@ jobs:
       - name: Build Docker image
         run: |
           cd frontend
-          docker build -t your-docker-image-name:latest .
+          docker build -t frontend:latest .
 
 #      - name: Log in to Docker Hub (or your Docker registry)
 #        if: success()
