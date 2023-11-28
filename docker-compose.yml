@@ -8,8 +8,7 @@ services:
     environment:
       - REACT_APP_SERVER_URL=${REACT_APP_SERVER_URL}
     depends_on:
-      - backend  # Wait for backend to start before frontend (optional)
-
+      - backend  
   db:
     image: postgres
     container_name: my-postgres-db
@@ -18,7 +17,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]  # PostgreSQL health check
+      test: ["CMD-SHELL", "pg_isready -U postgres"]  
       interval: 5s
       retries: 5
       start_period: 10s
@@ -36,4 +35,4 @@ services:
       - ALLOWED_ORIGINS=${ALLOWED_ORIGINS}
     depends_on:
       db:
-        condition: service_healthy  # Wait for db service to be healthy before starting backend
+        condition: service_healthy  
