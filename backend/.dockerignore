@@ -1,0 +1,19 @@
+# Ignore binary files
+*.exe
+*.o
+*.out
+
+# Ignore vendor directory
+vendor/
+
+# Ignore any build artifacts or compiled code
+bin/
+pkg/
+
+# Ignore IDE-specific directories/files
+.idea/
+.vscode/
+*.iml
+
+# Ignore any generated documentation
+doc/
