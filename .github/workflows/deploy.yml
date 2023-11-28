@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - frontend 
+      - backend
 
 jobs:
   deploy:
@@ -24,6 +27,7 @@ jobs:
       - name: Build and Push Frontend Image
         working-directory: frontend-directory
         run: |
+          ls -ltr 
           cd frontend
           docker build -t your-frontend-image-name .
           docker tag your-frontend-image-name ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/your-frontend-image-name:latest
