@@ -24,6 +24,7 @@ jobs:
       - name: Build and Push Frontend Image
         working-directory: frontend-directory
         run: |
+          cd frontend
           docker build -t your-frontend-image-name .
           docker tag your-frontend-image-name ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/your-frontend-image-name:latest
           docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/your-frontend-image-name:latest
@@ -31,6 +32,7 @@ jobs:
       - name: Build and Push Backend Image
         working-directory: backend-directory
         run: |
+          cd backend
           docker build -t your-backend-image-name .
           docker tag your-backend-image-name ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/your-backend-image-name:latest
           docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/your-backend-image-name:latest
