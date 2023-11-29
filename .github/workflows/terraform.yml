@@ -24,13 +24,21 @@ jobs:
         run: cd terraform/aws
 
       - name: Terraform Init
-        run: terraform init
+        run: |
+          cd terraform/aws
+          terraform init
       
       - name: Terraform Validate
-        run: terraform validate
+        run: |
+          cd terraform/aws
+          terraform validate
 
       - name: Terraform Plan
-        run: terraform plan -out=tfplan
+        run: |
+          cd terraform/aws
+          terraform plan -out=tfplan
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve tfplan
+        run: |
+          cd terraform/aws
+          terraform apply -auto-approve tfplan
