@@ -16,8 +16,8 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         with:
-          aws_access_key_id: "AKIAYVMZOD7VLDI2Q3JG"
-          aws_secret_access_key: "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"
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: us-east-1
     
       - name: Terraform Init
