@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   frontend:
-    image: public.ecr.aws/c3q9m2e4/frontend-first:latest
+    image: public.ecr.aws/c3q9m2e4/techverito_frontend:latest
     ports:
       - "3000:3000"
     environment:
@@ -24,7 +24,7 @@ services:
       start_period: 10s
 
   backend:
-    image: public.ecr.aws/c3q9m2e4/my-go-app:latest
+    image: public.ecr.aws/c3q9m2e4/techverito_backend:latest
     ports:
       - "8080:8080"
     environment:
