@@ -2,13 +2,14 @@ version: '3.8'
 
 services:
   frontend:
-    image: frontend-first
+    image: public.ecr.aws/c3q9m2e4/frontend-first:latest
     ports:
       - "3000:3000"
     environment:
       - REACT_APP_SERVER_URL=${REACT_APP_SERVER_URL}
     depends_on:
       - backend  
+
   db:
     image: postgres
     container_name: my-postgres-db
@@ -23,7 +24,7 @@ services:
       start_period: 10s
 
   backend:
-    image: my-go-app
+    image: public.ecr.aws/c3q9m2e4/my-go-app:latest
     ports:
       - "8080:8080"
     environment:
