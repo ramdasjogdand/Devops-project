@@ -41,6 +41,7 @@ jobs:
         run: |
           git pull origin main
           ls -ltr 
+          pwd
 
           
       - name: Copy Docker Compose Files to EC2
