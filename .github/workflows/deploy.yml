@@ -36,6 +36,16 @@ jobs:
       #     docker tag techverito_backend:latest public.ecr.aws/c3q9m2e4/techverito_backend:latest
       #     docker push public.ecr.aws/c3q9m2e4/techverito_backend:latest
 
+      - name: Copy Docker Compose Files to EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: 54.242.43.170
+          username: ec2-user
+          key: ${{ secrets.EC2_SSH_KEY }}
+          port: 22
+          source: "docker-compose.yml"
+          target: "/home/ec2-user/docker-compose.yml"
+
       - name: SSH into EC2 Instance
         uses: appleboy/ssh-action@master
         with:
@@ -43,10 +53,10 @@ jobs:
           username: ec2-user
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
-          
-      - name: Update Repository
-        run: |
-          git pull origin main
+          script: |
+            cd /home/ec2-user/
+            docker-compose up -d
+
 
       # - name: Start Docker Compose
       #   run: |
