@@ -1,2 +1,28 @@
 .idea
 frontend/node_modules
+
+# Ignore Terraform files that should not be committed
+.terraform/
+
+# Local .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Exclude any crash log files
+crash.log
+
+# Ignore .tfvars files that might contain sensitive information
+*.tfvars
+
+# Ignore override files as they're usually used to override resources locally and don't need to be committed
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Exclude CLI configuration files
+.terraformrc
+terraform.rc
+
+# Ignore .terraform.lock.hcl file
+.terraform.lock.hcl
