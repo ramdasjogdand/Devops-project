@@ -46,10 +46,10 @@ jobs:
           username: ec2-user
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
-          source: "docker-compose.yml"
+          source: |
+            docker-compose.yml
+            .env
           target: "/home/ec2-user/"
-
-
 
       - name: SSH into EC2 Instance
         uses: appleboy/ssh-action@master
