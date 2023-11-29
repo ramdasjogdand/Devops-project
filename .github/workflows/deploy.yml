@@ -13,28 +13,28 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Login to Amazon ECR
-        run: |
-          aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/c3q9m2e4
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: us-east-1
-          AWS_ACCOUNT_ID: c3q9m2e4
+      # - name: Login to Amazon ECR
+      #   run: |
+      #     aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/c3q9m2e4
+      #   env:
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     AWS_REGION: us-east-1
+      #     AWS_ACCOUNT_ID: c3q9m2e4
 
-      - name: Build and Push Frontend Image
-        working-directory: frontend
-        run: |
-          docker build -t techverito_frontend:latest .
-          docker tag techverito_frontend:latest public.ecr.aws/c3q9m2e4/techverito_frontend:latest
-          docker push public.ecr.aws/c3q9m2e4/techverito_frontend:latest
+      # - name: Build and Push Frontend Image
+      #   working-directory: frontend
+      #   run: |
+      #     docker build -t techverito_frontend:latest .
+      #     docker tag techverito_frontend:latest public.ecr.aws/c3q9m2e4/techverito_frontend:latest
+      #     docker push public.ecr.aws/c3q9m2e4/techverito_frontend:latest
 
-      - name: Build and Push Backend Image
-        working-directory: backend
-        run: |
-          docker build -t techverito_backend:latest .
-          docker tag techverito_backend:latest public.ecr.aws/c3q9m2e4/techverito_backend:latest
-          docker push public.ecr.aws/c3q9m2e4/techverito_backend:latest
+      # - name: Build and Push Backend Image
+      #   working-directory: backend
+      #   run: |
+      #     docker build -t techverito_backend:latest .
+      #     docker tag techverito_backend:latest public.ecr.aws/c3q9m2e4/techverito_backend:latest
+      #     docker push public.ecr.aws/c3q9m2e4/techverito_backend:latest
 
       - name: SSH into EC2 Instance
         uses: appleboy/ssh-action@master
