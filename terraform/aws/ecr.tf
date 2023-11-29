@@ -1,3 +1,7 @@
-resource "aws_ecr_repository" "my_ecr_repo" {
-  name = "my-ecr-repository" 
+resource "aws_ecrpublic_repository" "techverito_backend" {
+  repository_name = "techverito_backend"
+}
+
+resource "aws_ecrpublic_repository" "techverito_frontend" {
+  repository_name = "techverito_frontend"
 }
