@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'frontend/**' # Update path to match your frontend directory structure
-      - 'backend/**'  # Update path to match your backend directory structure
+    # paths:
+    #   - 'frontend/**' # Update path to match your frontend directory structure
+    #   - 'backend/**'  # Update path to match your backend directory structure
 
 jobs:
   deploy:
