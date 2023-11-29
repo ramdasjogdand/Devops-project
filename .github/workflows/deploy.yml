@@ -36,6 +36,17 @@ jobs:
           docker tag techverito_backend:latest public.ecr.aws/c3q9m2e4/techverito_backend:latest
           docker push public.ecr.aws/c3q9m2e4/techverito_backend:latest
           
+      - name: Stop and Remove Existing Containers
+        uses: appleboy/ssh-action@master
+        with:
+          host: 54.242.43.170
+          username: ec2-user
+          key: ${{ secrets.EC2_SSH_KEY }}
+          port: 22
+          script: |
+            cd /home/ec2-user/
+            docker-compose down
+
       - name: Copy Docker Compose Files to EC2
         uses: appleboy/scp-action@master
         with:
@@ -56,7 +67,7 @@ jobs:
           source: .env
           target: "/home/ec2-user/"
           
-      - name: SSH into EC2 Instance
+      - name: Deploy with Docker Compose
         uses: appleboy/ssh-action@master
         with:
           host: 54.242.43.170
@@ -65,4 +76,4 @@ jobs:
           port: 22
           script: |
             cd /home/ec2-user/
-            docker-compose up -d
+            docker-compose up -d --force-recreate
