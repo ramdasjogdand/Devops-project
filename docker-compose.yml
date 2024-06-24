@@ -1,8 +1,8 @@
-version: '3.8'
+version: '3'
 
 services:
   frontend:
-    image: public.ecr.aws/c3q9m2e4/techverito_frontend:latest
+    image: ramdas1999/devops-app-frontend:latest
     ports:
       - "3000:3000"
     environment:
@@ -24,9 +24,9 @@ services:
       start_period: 10s
 
   backend:
-    image: public.ecr.aws/c3q9m2e4/techverito_backend:latest
+    image: ramdas1999/devops-app-backend:latest
     ports:
-      - "8080:8080"
+      - "8081:8080"
     environment:
       - DB_HOST=db
       - DB_USER=postgres
